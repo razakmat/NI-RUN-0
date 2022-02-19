@@ -1,0 +1,98 @@
+function my_int(n) ->
+	object extends n
+	begin
+		let value = n;
+		function print_decimal() -> print("~\n",this.value);
+		function print_roman() ->
+			begin
+				let val = this.value;
+	
+				while val >= 1000
+				do begin
+					print("M");
+					val <- val - 1000;
+				end;
+				if val >= 900
+				then begin
+					print("CM");
+					val <- val - 900;
+				end;
+				if val >= 500
+				then begin
+					print("D");
+					val <- val - 500;
+				end;
+				if val >= 400
+				then begin
+					print("CD");
+					val <- val - 400;
+				end;
+				while val >= 100
+				do begin
+					print("C");
+					val <- val - 100;
+				end;
+				if val >= 90
+				then begin
+					print("XC");
+					val <- val - 90;
+				end;
+				if val >= 50
+				then begin
+					print("L");
+					val <- val - 50;
+				end;
+				if val >= 40
+				then begin
+					print("XL");
+					val <- val - 40;
+				end;
+				while val >= 10
+				do begin
+					print("X");
+					val <- val - 10;
+				end;
+				if val >= 9
+				then begin
+					print("IX");
+					val <- val - 9;
+				end;
+				if val >= 5
+				then begin
+					print("V");
+					val <- val - 5;
+				end;
+				if val >= 4
+				then begin
+					print("IV");
+					val <- val - 4;
+				end;
+				while val >= 1
+				do begin
+					print("I");
+					val <- val - 1;
+				end;
+				print("\n");
+			end;
+	    function +  (op2) -> begin my_int(this.value + op2.value) end;
+	    function -  (op2) -> begin my_int(this.value - op2.value) end;
+	   	function *  (op2) -> begin my_int(this.value * op2.value) end;
+	    function /  (op2) -> begin my_int(this.value / op2.value) end;
+	    function %  (op2) -> begin my_int(this.value % op2.value) end;
+	    function <= (op2) -> begin this.value <= op2.value end;
+	    function >= (op2) -> begin this.value >= op2.value end;
+	    function <  (op2) -> begin this.value <  op2.value end;
+	    function >  (op2) -> begin this.value >  op2.value end;
+	    function == (op2) -> begin this.value == op2.value end;
+	    function != (op2) -> begin this.value != op2.value end;
+
+end;
+
+let a = my_int(333);
+
+let b = a + a;
+
+print("333 - ");
+a.print_roman(); // 333 - CCCXXXIII
+print("666 - ");
+b.print_roman(); // 666 - DCLXVI
